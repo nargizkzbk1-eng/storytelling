@@ -1,0 +1,582 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Frames of Astana</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: a darkroom. Dark ground, one safelight-red accent, chapter label in a left rail, prose right.
+   Wide moments (film strip, cutting room) break out of the column. */
+:root{
+  --ink:#0f0e0d;        /* darkroom black, warm */
+  --film:#1a1714;       /* film base */
+  --paper:#ece5d8;      /* print white */
+  --mute:#a09a8d;       /* silver */
+  --rule:#2e2a25;
+  --safe:#ee4a36;       /* safelight red: the only accent */
+  --f-display:"Instrument Serif","Times New Roman",serif;
+  --f-body:"Newsreader",Georgia,serif;
+  --f-mono:"Space Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--f-body);font-size:clamp(1.08rem,1.02rem + .3vw,1.28rem);line-height:1.62;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--ink);z-index:60}
+img{display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--safe);outline-offset:3px}
+
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:1120px;margin-inline:auto;width:100%}
+.mono{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+
+/* overlays */
+.grain{position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.09;mix-blend-mode:screen;background-image:var(--grain);animation:grain .9s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-2%,-3%)}80%{transform:translate(5%,4%)}100%{transform:translate(0,0)}}
+.vignette{position:fixed;inset:0;z-index:49;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.45))}
+.flash{position:fixed;inset:0;z-index:70;background:#fff;opacity:0;pointer-events:none}
+.flash.go{animation:flash .38s ease-out}
+@keyframes flash{0%{opacity:0}12%{opacity:.17}100%{opacity:0}}
+
+/* header / frame counter */
+.hud{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:61;background:linear-gradient(var(--ink),rgba(15,14,13,.0))}
+.hud-in{display:flex;justify-content:space-between;gap:1rem;padding-block:.8rem}
+.hud b{color:var(--paper);font-weight:700}
+.hud .rec{display:inline-block;width:.55rem;height:.55rem;border-radius:50%;background:var(--safe);margin-right:.5rem;animation:blink 1.6s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+.hud{background:rgba(15,14,13,.92)}
+.hud-in span{white-space:nowrap}
+@media (max-width:520px){#frname{display:none}}
+.bar{height:2px;background:var(--rule)}
+.bar i{display:block;height:100%;background:var(--safe);transform:scaleX(0);transform-origin:left}
+
+/* hero */
+.hero{padding-block:clamp(5.5rem,13vw,9rem) clamp(2.5rem,6vw,4rem)}
+.vf{position:relative;padding:clamp(1.8rem,5vw,3.6rem) clamp(1rem,4vw,3.4rem)}
+.vf>span{position:absolute;width:clamp(26px,4vw,48px);height:clamp(26px,4vw,48px);border:0 solid var(--safe);animation:lock 1.3s cubic-bezier(.2,.8,.2,1) both}
+.vf .c1{top:0;left:0;border-width:3px 0 0 3px}
+.vf .c2{top:0;right:0;border-width:3px 3px 0 0}
+.vf .c3{bottom:0;left:0;border-width:0 0 3px 3px}
+.vf .c4{bottom:0;right:0;border-width:0 3px 3px 0}
+.vf .c1{--tx:-30px;--ty:-30px}.vf .c2{--tx:30px;--ty:-30px}.vf .c3{--tx:-30px;--ty:30px}.vf .c4{--tx:30px;--ty:30px}
+@keyframes lock{0%{transform:translate(var(--tx),var(--ty));opacity:0}35%{opacity:1}100%{transform:none;opacity:1}}
+.kicker{margin:0 0 1.2rem}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(2.7rem,8.4vw,7rem);line-height:.96;letter-spacing:-.015em;margin:0;text-wrap:balance;animation:focus 1.7s cubic-bezier(.2,.7,.2,1) both}
+h1 em{color:var(--safe)}
+@keyframes focus{0%{filter:blur(16px);opacity:.35;letter-spacing:.05em}100%{filter:blur(0);opacity:1;letter-spacing:-.015em}}
+.deck{font-size:clamp(1.2rem,2.2vw,1.65rem);line-height:1.45;max-width:34em;margin:1.6rem 0 0;color:var(--paper);font-style:italic}
+.by{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;margin-top:2rem}
+.af{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:clamp(1.8rem,4vw,3rem);padding-top:.9rem;border-top:1px solid var(--rule)}
+
+/* chapters */
+.chap{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,40rem);gap:clamp(1.5rem,5vw,4.5rem);padding-block:clamp(3.5rem,9vw,7rem) 0;align-items:start}
+.rail{position:sticky;top:5rem}
+.rail .n{font-family:var(--f-display);font-style:italic;font-size:clamp(3.2rem,7vw,5.6rem);line-height:.9;color:var(--safe);display:block;margin-top:.5rem}
+.chap h2,.h2{font-family:var(--f-display);font-weight:400;font-size:clamp(2.1rem,5.2vw,3.9rem);line-height:1;letter-spacing:-.01em;margin:0 0 .5rem;text-wrap:balance}
+.sub{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 2rem}
+.prose p{margin:0 0 1.2rem}
+.prose p:last-child{margin-bottom:0}
+.dropcap::first-letter{font-family:var(--f-display);font-size:4.6em;float:left;line-height:.8;padding:.06em .1em 0 0;color:var(--safe)}
+.cont{padding-block:2rem 0}
+.cont .prose{max-width:40rem;margin-left:calc(13rem + clamp(1.5rem,5vw,4.5rem))}
+@media (max-width:860px){
+  .chap{grid-template-columns:minmax(0,1fr)}
+  .rail{position:static;display:flex;align-items:baseline;gap:1rem}
+  .rail .n{margin:0}
+  .cont .prose{margin-left:0}
+}
+
+/* quotes */
+.quote{margin:clamp(2.5rem,6vw,4.5rem) 0;padding-block:1rem}
+.quote blockquote{margin:0;position:relative;padding-left:clamp(0rem,3vw,2.4rem)}
+.quote blockquote::before{content:"\201C";position:absolute;left:-.05em;top:-.28em;font-family:var(--f-display);font-size:clamp(5rem,12vw,9rem);line-height:1;color:var(--safe)}
+.quote p{font-family:var(--f-display);font-size:clamp(1.7rem,4.2vw,3.1rem);line-height:1.12;margin:0;max-width:24em;text-wrap:pretty;padding-top:clamp(2.6rem,5vw,4rem)}
+.quote .w{opacity:.26;transition:opacity .5s ease;transition-delay:calc(var(--i)*38ms)}
+.quote.in .w{opacity:1}
+.quote cite{display:block;margin-top:1.4rem;font-style:normal}
+.quote.inline p{font-size:clamp(1.5rem,3.4vw,2.4rem)}
+
+/* names ticker */
+.names{margin:clamp(2rem,5vw,3.5rem) 0;display:grid;grid-template-columns:auto 1fr;gap:1rem clamp(1.2rem,4vw,3rem);align-items:center}
+.names .big{font-family:var(--f-display);font-size:clamp(7rem,22vw,15rem);line-height:.8;color:var(--safe);font-style:italic}
+.names ol{list-style:none;margin:0;padding:0;display:grid;gap:.2rem}
+.names li{display:flex;gap:1rem;align-items:baseline;padding:.45rem 0;border-bottom:1px solid var(--rule);opacity:.3;transition:opacity .5s ease,transform .5s ease;transform:translateX(-8px)}
+.names li.on{opacity:1;transform:none}
+.names li span:first-child{font-family:var(--f-mono);font-size:.8rem;letter-spacing:.1em;color:var(--safe);min-width:3.2rem}
+.names li span:last-child{font-family:var(--f-display);font-size:clamp(1.4rem,3vw,2.2rem);line-height:1.1}
+.names .cap{grid-column:1/-1}
+@media (max-width:560px){.names{grid-template-columns:1fr}.names .big{font-size:7rem}}
+
+/* film strip */
+.strip{position:relative;margin-top:clamp(2.5rem,6vw,4.5rem)}
+.strip-sticky{padding-block:1rem 2rem}
+.strip-top{display:flex;justify-content:space-between;gap:1rem;padding-bottom:1rem}
+.pinned .strip-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;padding-block:4.5rem 1rem;display:flex;flex-direction:column;justify-content:center}
+.view{overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
+.pinned .view{overflow:visible}
+.track{position:relative;display:flex;gap:clamp(1.4rem,3vw,3rem);width:max-content;background:var(--film);padding:34px max(16px,env(safe-area-inset-right,0px)) 34px max(16px,env(safe-area-inset-left,0px));will-change:transform}
+.track::before,.track::after{content:"";position:absolute;left:0;right:0;height:12px;background:repeating-linear-gradient(90deg,transparent 0 9px,rgba(236,229,216,.78) 9px 25px,transparent 25px 40px);-webkit-mask:linear-gradient(#000,#000);opacity:.8}
+.track::before{top:11px}.track::after{bottom:11px}
+.frame{margin:0;width:max-content;max-width:90vw}
+.frame .plate{position:relative;background:#000;padding:0}
+.frame img{height:clamp(220px,46vh,500px);width:auto;max-width:none;cursor:zoom-in;filter:grayscale(1) sepia(.5) blur(7px) brightness(.55);transform:scale(1.02);transition:filter 1.8s ease,transform 1.8s ease}
+.frame.dev img{filter:none;transform:none}
+.frame .edge{display:flex;justify-content:space-between;color:#d9a441;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;padding-top:.35rem}
+.frame figcaption{width:0;min-width:100%;padding-top:.5rem}
+.frame h3{font-family:var(--f-display);font-weight:400;font-size:1.45rem;line-height:1.1;margin:.2rem 0 .3rem}
+.frame figcaption p{margin:0;font-size:.9rem;line-height:1.42;color:var(--mute)}
+@media (max-height:700px){.frame figcaption p{font-size:.82rem}}
+
+/* shot list */
+.shots{margin:clamp(2rem,5vw,3rem) 0 0;border:1px solid var(--rule);padding:1.4rem clamp(1rem,3vw,1.8rem);background:var(--film)}
+.shots header{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.6rem}
+.shot{all:unset;box-sizing:border-box;display:flex;gap:1rem;align-items:flex-start;width:100%;padding:.9rem 0;border-top:1px solid var(--rule);cursor:pointer;font-family:var(--f-display);font-size:clamp(1.3rem,2.6vw,1.8rem);line-height:1.15}
+.shot:focus-visible{outline:2px solid var(--safe);outline-offset:2px}
+.shot .box{flex:none;width:1.5rem;height:1.5rem;border:2px solid var(--mute);margin-top:.15rem;position:relative}
+.shot .box svg{position:absolute;inset:-6px -2px auto auto;width:2rem;height:2rem;overflow:visible}
+.shot .box path{fill:none;stroke:var(--safe);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .35s ease}
+.shot[aria-pressed="true"] .box path{stroke-dashoffset:0}
+.shot[aria-pressed="true"] .t{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--safe)}
+.shot small{display:block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-top:.3rem;text-decoration:none}
+
+/* interviews */
+.talks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.2rem,3vw,2.4rem);margin-top:2.5rem}
+@media (max-width:860px){.talks{grid-template-columns:minmax(0,1fr)}}
+.talk{background:var(--film);border:1px solid var(--rule);padding:clamp(1.1rem,3vw,1.8rem);min-width:0}
+.talk h3{font-family:var(--f-display);font-weight:400;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1;margin:.3rem 0 .4rem}
+.talk .who{font-size:.95rem;color:var(--mute);margin:0 0 1.2rem;line-height:1.4}
+.player{display:flex;align-items:center;gap:.9rem;padding:.8rem 0;border-block:1px solid var(--rule)}
+.play{flex:none;width:3rem;height:3rem;border-radius:50%;border:2px solid var(--safe);background:transparent;color:var(--safe);cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s}
+.play:hover{background:var(--safe);color:var(--ink)}
+.play svg{width:1.1rem;height:1.1rem;fill:currentColor}
+.play .pa{display:none}.player.on .play .pl{display:none}.player.on .play .pa{display:block}
+.wave{flex:1;min-width:0;height:48px;cursor:pointer}
+.wave canvas{width:100%;height:100%;display:block}
+.time{font-family:var(--f-mono);font-size:.7rem;color:var(--mute);min-width:5.2em;text-align:right;font-variant-numeric:tabular-nums}
+.qa{margin:1.2rem 0 0;display:grid;gap:1rem}
+.qa dt{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--safe);line-height:1.5}
+.qa dd{margin:.25rem 0 0;font-size:1rem;line-height:1.5}
+
+/* cutting room */
+.cutroom{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,3vw,2rem);margin:2.5rem 0 0}
+@media (max-width:640px){.cutroom{grid-template-columns:minmax(0,1fr)}}
+.cut{margin:0;position:relative}
+.cut .ph{position:relative;overflow:hidden;background:#000}
+.cut img{width:100%;height:auto;max-height:420px;object-fit:cover;filter:grayscale(.85) brightness(.7);cursor:zoom-in}
+.cut svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.cut svg path{fill:none;stroke:var(--safe);stroke-width:7;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0;opacity:.95}
+.armed .cut svg path{stroke-dashoffset:1}
+.armed .cut.in svg path{stroke-dashoffset:0;transition:stroke-dashoffset .7s ease .15s}
+.armed .cut.in svg path+path{transition-delay:.7s}
+.cut figcaption{display:flex;justify-content:space-between;gap:1rem;padding-top:.6rem}
+.cut .tag{color:var(--safe)}
+
+/* kept frames */
+.keep{display:grid;gap:clamp(2.5rem,6vw,5rem);margin-top:2.5rem}
+.kf{margin:0;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(1rem,3vw,2.4rem);align-items:end}
+.kf:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.7fr)}
+.kf:nth-child(even) .ph{order:2}
+.kf .ph{overflow:hidden;background:#000}
+.kf img{width:100%;height:auto;cursor:zoom-in;filter:grayscale(1) sepia(.5) blur(8px) brightness(.55);transform:scale(1.03);transition:filter 1.8s ease,transform 1.8s ease}
+.kf.dev img{filter:none;transform:none}
+.kf h3{font-family:var(--f-display);font-weight:400;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.05;margin:.4rem 0 .6rem}
+.kf p{margin:0;color:var(--mute);font-size:1rem;line-height:1.5}
+@media (max-width:760px){.kf,.kf:nth-child(even){grid-template-columns:minmax(0,1fr)}.kf:nth-child(even) .ph{order:0}}
+
+/* big statement */
+.statement{padding-block:clamp(4rem,10vw,8rem)}
+.statement p{font-family:var(--f-display);font-size:clamp(2.1rem,6.2vw,5rem);line-height:1.02;letter-spacing:-.01em;margin:0;max-width:17em;text-wrap:balance}
+.statement .w{opacity:.2;transition:opacity .6s ease;transition-delay:calc(var(--i)*55ms)}
+.statement.in .w{opacity:1}
+.statement em{color:var(--safe)}
+
+/* colophon */
+.colo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,3vw,2.4rem);margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--rule)}
+.colo h3{margin:0 0 .6rem}
+.colo p{margin:0;font-size:.95rem;line-height:1.55;color:var(--mute)}
+@media (max-width:760px){.colo{grid-template-columns:minmax(0,1fr)}}
+footer{padding-block:3rem 4rem}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:80;background:rgba(8,7,6,.94);display:none;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px 16px;cursor:zoom-out}
+.lb.open{display:grid}
+.lb img{max-width:100%;max-height:88vh;width:auto;height:auto;box-shadow:0 20px 80px rgba(0,0,0,.6)}
+.lb p{position:absolute;bottom:1rem;left:0;right:0;text-align:center;margin:0}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .quote .w,.statement .w,.names li{opacity:1;transform:none}
+  .frame img,.kf img{filter:none;transform:none}
+}
+</style>
+
+<div class="grain" id="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="flash" id="flash" aria-hidden="true"></div>
+
+<header class="hud">
+  <div class="wrap"><div class="col hud-in mono"><span><i class="rec"></i>Frames of Astana</span><span>Frame <b id="fr">01</b>/07 · <span id="frname">Opening</span></span></div></div>
+  <div class="bar"><i id="bar"></i></div>
+</header>
+
+<main>
+<!-- 01 HERO -->
+<section class="hero wrap" data-frame="01" data-name="Opening">
+  <div class="col">
+    <div class="vf">
+      <span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span>
+      <p class="mono kicker">A photo essay · Astana · 2026</p>
+      <h1>Street Photography as a Way to Preserve a <em>City’s History</em></h1>
+      <p class="deck">How photographers document everyday life, urban changes, and the people who stay outside the focus of official news.</p>
+      <div class="by mono"><span>Text, photographs and interviews by Nargiz</span><span>Astana</span></div>
+    </div>
+    <div class="af mono"><span>51.13° N · 71.43° E</span><span>Left bank / Right bank</span><span>Scroll to advance the frame ↓</span></div>
+  </div>
+</section>
+
+<!-- 02 INTRO -->
+<section class="wrap" data-frame="02" data-name="Introduction" data-flash>
+  <div class="col">
+    <div class="chap">
+      <div class="rail"><span class="mono">Introduction</span></div>
+      <div class="prose">
+        <h2>The Blindness of Habit</h2>
+        <p class="sub">What we stop seeing</p>
+        <p class="dropcap">We stop seeing what surrounds us every day. Caught up in routines, news feeds and internet gossip, we rarely look up from the screen, and so we rarely ask what this city looked like yesterday or what it will become tomorrow.</p>
+        <p>The city itself has not been so forgetful. It has been renamed five times since 1961.</p>
+      </div>
+    </div>
+    <div class="cont"><div class="names" id="names">
+      <div class="big" aria-hidden="true">5</div>
+      <ol>
+        <li><span>1961</span><span>Tselinograd</span></li>
+        <li><span>1992</span><span>Akmola</span></li>
+        <li><span>1998</span><span>Astana</span></li>
+        <li><span>2019</span><span>Nur-Sultan</span></li>
+        <li><span>2022</span><span>Astana, again</span></li>
+      </ol>
+      <p class="mono cap">Names of the city, 1961–2022</p>
+    </div></div>
+    <div class="cont"><div class="prose">
+      <p>The capital moved here in 1997. By May 2026, driverless light-rail trains were already gliding above the left bank. Official news keeps the gloss: glass towers, glowing domes, grand openings.</p>
+      <p>Street photography works differently. It does not wait for historic milestones. It records what a street looks like on an ordinary evening, and that is why a casual snapshot taken just for fun, without filters or tourist landmarks, can end up as the only honest historical record future generations will have.</p>
+    </div></div>
+  </div>
+</section>
+
+<!-- 03 CHAPTER I -->
+<section data-frame="03" data-name="Chapter I" data-flash>
+  <div class="wrap"><div class="col">
+    <div class="chap">
+      <div class="rail"><span class="mono">Chapter</span><span class="n">I</span></div>
+      <div class="prose">
+        <h2>What isn’t on Google</h2>
+        <p class="sub">Family albums of Tselinograd</p>
+        <p>A city’s memory does not live in official decrees. It lives in boxes and photo albums on the top shelves at home.</p>
+        <p>My first interviewee, Laila Nurlybaevna, came to Tselinograd as a child and has lived here for two or three decades. I asked what strangers a hundred years from now would think if only random street photos survived. She smiled at how fast the city grows more beautiful. Then came a regret.</p>
+      </div>
+    </div>
+    <div class="quote"><blockquote>
+      <p data-words>It’s a real pity this isn’t on social media. There are no old photographs of old Tselinograd there, but friends and relatives have them in their albums. Very interesting ones, of the old city.</p>
+      <cite class="mono">— Laila Nurlybaevna</cite>
+    </blockquote></div>
+    <div class="cont" style="padding-top:0"><div class="prose"><p>The pictures exist. They are just not where the next generation looks first. To see the city before the glass skyscrapers, we opened her personal archive and went through it frame by frame.</p></div></div>
+  </div></div>
+
+  <div class="strip" id="strip" aria-label="Laila Nurlybaevna’s family archive">
+    <div class="strip-sticky">
+      <div class="wrap"><div class="col strip-top mono"><span>The archive of Laila Nurlybaevna</span><span id="stripc">01 / 04</span></div></div>
+      <div class="view"><div class="track" id="track">
+        <figure class="frame"><div class="plate"><img data-zoom src="img/arch1-mekhkolonna.jpg" alt="A young woman in a fur hat and leather jacket in front of a blue wall with barred windows and a Soviet mosaic of a worker"></div>
+          <div class="edge"><span>▸ 1</span><span>1A</span></div>
+          <figcaption><h3>Mekhkolonna 56</h3><p>A young woman in a fur hat and leather jacket stands against melting spring snow, a blue wall with barred windows and a Soviet mosaic of a worker among power lines. A portrait of an industrial outskirts district that never made it onto postcards.</p></figcaption></figure>
+        <figure class="frame"><div class="plate"><img data-zoom src="img/arch2-zhukovka.jpg" alt="Friends in 1990s coats and sunglasses beside a patterned bus stop pavilion"></div>
+          <div class="edge"><span>▸ 2</span><span>2A</span></div>
+          <figcaption><h3>Old Zhukovka</h3><p>Friends in 1990s trench coats and dark sunglasses pose beside a patterned wood-and-metal bus-stop pavilion, spring puddles at their feet. Street fashion and neighbourhood atmosphere that modern construction has erased.</p></figcaption></figure>
+        <figure class="frame"><div class="plate"><img data-zoom src="img/arch3-center.jpg" alt="Six people in fur hats beside a resting camel on a snowy central square"></div>
+          <div class="edge"><span>▸ 3</span><span>3A</span></div>
+          <figcaption><h3>Central Tselinograd</h3><p>A winter group portrait in fluffy fur hats next to a resting camel on the central square, a modernist glass-and-concrete building rising behind them.</p></figcaption></figure>
+        <figure class="frame"><div class="plate"><img data-zoom src="img/arch4-school8.jpg" alt="Four teenagers on the steps in front of blue wooden school doors"></div>
+          <div class="edge"><span>▸ 4</span><span>4A</span></div>
+          <figcaption><h3>Secondary School No. 8</h3><p>Four teenagers on the steps in front of bright blue wooden doors and pale columns. An everyday chronicle of growing up that carries more weight than any monument.</p></figcaption></figure>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="wrap"><div class="col">
+    <div class="cont"><div class="prose">
+      <p>For Laila, the old city meant open space: big streetlamps, big shop windows on Respublika Avenue, the K-700 tractor monument at its heart. Today, she says, life boils on both banks, especially the left, where new buildings carry a new chapter of the country’s history.</p>
+    </div></div>
+  </div></div>
+</section>
+
+<!-- 04 CHAPTER II -->
+<section class="wrap" data-frame="04" data-name="Chapter II" data-flash>
+  <div class="col">
+    <div class="chap">
+      <div class="rail"><span class="mono">Chapter</span><span class="n">II</span></div>
+      <div class="prose">
+        <h2>A city at LRT speed</h2>
+        <p class="sub">Vanishing details</p>
+        <p>If older residents measure the city against Tselinograd, younger locals watch it change at speed. Dilnaz Zhusupova grew up near the Seventh Polyclinic. She loves the aesthetic energy of modern Astana: the new station district, trendy cafés where young bloggers pose, the newly launched LRT.</p>
+        <p>But when I asked what she misses, she named no landmark.</p>
+      </div>
+    </div>
+    <div class="quote"><blockquote>
+      <p data-words>I probably miss the open-air market most. It’s tied up with childhood. When we were kids we loved going to the market, shopping outdoors, and it had its own kind of vibe.</p>
+      <cite class="mono">— Dilnaz Zhusupova</cite>
+    </blockquote></div>
+    <div class="cont" style="padding-top:0"><div class="prose">
+      <p>Behind her delight in the city’s new vibe sits a quiet realization: familiar places are vanishing fast. The streets around her childhood school are filling up with residential complexes and shopping malls.</p>
+      <p>I asked what must be photographed now, before it is gone in twenty years. She gave a clear to-do list for any street photographer.</p>
+    </div>
+    <div class="shots" style="max-width:40rem">
+      <header class="mono"><span>Shot list · before it’s gone</span><span id="shotc">0 of 3 shot</span></header>
+      <button class="shot" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24"><path pathLength="1" d="M3 13l6 6L22 4"/></svg></span><span><span class="t">Old Soviet-era bus stops</span><small>Being dismantled and replaced</small></span></button>
+      <button class="shot" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24"><path pathLength="1" d="M3 13l6 6L22 4"/></svg></span><span><span class="t">Theatres on the right bank</span></span></button>
+      <button class="shot" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24"><path pathLength="1" d="M3 13l6 6L22 4"/></svg></span><span><span class="t">Old courtyards and streets around the Seventh Polyclinic</span></span></button>
+      <p class="mono" style="margin:.9rem 0 0">Tap to tick one off</p>
+    </div></div>
+  </div>
+</section>
+
+<!-- 05 CHAPTER III -->
+<section class="wrap" data-frame="05" data-name="Chapter III" data-flash>
+  <div class="col">
+    <div class="chap">
+      <div class="rail"><span class="mono">Chapter</span><span class="n">III</span></div>
+      <div class="prose">
+        <h2>Voices on the pavement</h2>
+        <p class="sub">Two conversations, as recorded</p>
+        <p>Both interviews were recorded on the street, in Russian. Press play to hear the originals. The English below is my selection and translation of what was said.</p>
+      </div>
+    </div>
+
+    <div class="talks">
+      <article class="talk">
+        <p class="mono">Interview 01</p>
+        <h3>Laila Nurlybaevna</h3>
+        <p class="who">Visited Tselinograd as a child, has lived in the city for two or three decades.</p>
+        <div class="player" data-src="audio/interview-laila.mp3" data-seed="3">
+          <button class="play" aria-label="Play interview with Laila Nurlybaevna"><svg class="pl" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+          <div class="wave"><canvas></canvas></div>
+          <span class="time">0:00</span>
+        </div>
+        <dl class="qa">
+          <div><dt>What would people say in 100 years, with only random phone photos left?</dt><dd>They’ll probably be surprised how fast time flies, and how the city keeps transforming, more and more beautiful.</dd></div>
+          <div><dt>Which place still feels warm to you?</dt><dd>Where the K-700 tractor stood. It was the symbol of Tselinograd. Then came Respublika Avenue, the epicentre: the most beautiful shops, museums, cinemas, even restaurants, all on that one street.</dd></div>
+          <div><dt>Where would you take a friend who has never been here?</dt><dd>Life boils on both banks now, especially the left. It’s a new city, but there is something in those buildings that speaks of our country’s history. I’d take them there.</dd></div>
+        </dl>
+      </article>
+
+      <article class="talk">
+        <p class="mono">Interview 02</p>
+        <h3>Dilnaz Zhusupova</h3>
+        <p class="who">Grew up near the Seventh Polyclinic and studied in the same district.</p>
+        <div class="player" data-src="audio/interview-dilnaz.mp3" data-seed="7">
+          <button class="play" aria-label="Play interview with Dilnaz Zhusupova"><svg class="pl" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg><svg class="pa" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+          <div class="wave"><canvas></canvas></div>
+          <span class="time">0:00</span>
+        </div>
+        <dl class="qa">
+          <div><dt>When did you realize the city had changed?</dt><dd>Right now, probably with the LRT, and with the new districts. Nurzhol, the New Railway Station: it has become beautiful, with very aesthetic cafés. Girls, young models, everyone shoots there as if abroad, for blogs.</dd></div>
+          <div><dt>Three places for a visitor?</dt><dd>First the park along the Ishim river. Then a ride on the LRT to see the beautiful places. And a walk around Khan Shatyr, Mega and the Bayterek boulevard.</dd></div>
+          <div><dt>What should be photographed right now?</dt><dd>I photographed the old bus stops. They’re changing now, but some are still there. And the theatres on the right bank. I’d keep them as pictures, the way our parents did.</dd></div>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 06 CHAPTER IV -->
+<section class="wrap" data-frame="06" data-name="Chapter IV" data-flash id="ch4">
+  <div class="col">
+    <div class="chap">
+      <div class="rail"><span class="mono">Chapter</span><span class="n">IV</span></div>
+      <div class="prose">
+        <h2>Through my lens</h2>
+        <p class="sub">Cutting the towers to see the streets</p>
+        <p>Dilnaz’s list became a test for my own camera. Going through everything I shot around Astana, I saw that my lens had gone to the landmarks first.</p>
+        <p>I set aside the floodlit skyscrapers. They were my best-lit pictures, and they showed what everyone’s phone already holds. I cut them, keeping only Bayterek as a postcard benchmark to measure the rest of the city against.</p>
+      </div>
+    </div>
+
+    <div class="cutroom">
+      <figure class="cut"><div class="ph"><img data-zoom src="img/cut1-towers.jpg" alt="Floodlit towers at night, cut from the edit"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path pathLength="1" d="M6 8L94 92"/><path pathLength="1" d="M94 8L6 92"/></svg></div>
+        <figcaption class="mono"><span>Floodlit towers, night</span><span class="tag">Cut</span></figcaption></figure>
+      <figure class="cut"><div class="ph"><img data-zoom src="img/cut2-golden.jpg" alt="Golden-hour towers with an arch, cut from the edit"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path pathLength="1" d="M6 8L94 92"/><path pathLength="1" d="M94 8L6 92"/></svg></div>
+        <figcaption class="mono"><span>Golden-hour towers</span><span class="tag">Cut</span></figcaption></figure>
+    </div>
+
+    <div class="cont" style="padding-top:clamp(2.5rem,6vw,4rem)"><div class="prose">
+      <p>What remained were ordinary, grey streets, the closest visual record of what residents actually miss.</p>
+    </div></div>
+
+    <div class="keep">
+      <figure class="kf"><div class="ph"><img data-zoom src="img/now3-junction.jpg" alt="A wet junction at dusk with orange traffic cones and headlights"></div>
+        <figcaption><p class="mono">Kept · 01</p><h3>A wet junction at dusk</h3><p>Black asphalt, orange traffic cones, headlights and brake lights smeared across the rain. No landmark, just the evening rush.</p></figcaption></figure>
+      <figure class="kf"><div class="ph"><img data-zoom src="img/now2-lamp.jpg" alt="An ornate black streetlamp and a pine tree beside a new pavement"></div>
+        <figcaption><p class="mono">Kept · 02</p><h3>Ornate lamps on a new pavement</h3><p>A quiet contrast to the big streetlamps Laila remembers from old Tselinograd. A lone pedestrian walks away at the edge of the frame.</p></figcaption></figure>
+      <figure class="kf"><div class="ph"><img data-zoom src="img/now1-viaduct.jpg" alt="An LRT train crossing a viaduct between apartment blocks"></div>
+        <figcaption><p class="mono">Kept · 03</p><h3>The LRT between apartment blocks</h3><p>Patches of snow still lie beneath the viaduct, at the spot where Dilnaz felt the city shift into the future.</p></figcaption></figure>
+    </div>
+  </div>
+  <div class="statement" id="st1"><div class="col"><p data-words>Street photography does not wait for a headline. It captures an ordinary Tuesday before it turns into <em>history.</em></p></div></div>
+</section>
+
+<!-- 07 CONCLUSION -->
+<section class="wrap" data-frame="07" data-name="Conclusion" data-flash>
+  <div class="col">
+    <div class="chap" style="padding-top:clamp(1rem,3vw,2rem)">
+      <div class="rail"><span class="mono">Conclusion</span></div>
+      <div class="prose">
+        <h2>An archive for a hundred years ahead</h2>
+        <p class="sub">What will be left</p>
+        <p>A hundred years from now, a stranger scrolling through the surviving gigabytes of our smartphones will see the glow of the left bank, because we loved photographing the light.</p>
+        <p>But if the casual, unpolished snapshots survive beside it, a wet crossroads, an old bus stop, strangers in winter coats, family photographs from Tselinograd, the future gets a chance to see how the city truly lived. It will remember the people who stayed outside the frame of official news.</p>
+      </div>
+    </div>
+
+    <div class="colo">
+      <div><h3 class="mono">Reporting</h3><p>Street interviews were recorded in Russian and translated into English by the author. Machine transcripts were edited for clarity and recognition errors.</p></div>
+      <div><h3 class="mono">Visuals &amp; privacy</h3><p>Contemporary street photographs were shot by the author in Astana. Historical photographs come from Laila Nurlybaevna’s personal family archive. Passers-by were photographed from behind or at a distance to respect privacy.</p></div>
+      <div><h3 class="mono">Fact-checking</h3><p>Dates and urban milestones (1961–2026) were verified against e-history.kz, Encyclopaedia Britannica, RFE/RL, CTBUH, Kazinform, Interfax, The Astana Times and Informburo.kz.</p></div>
+    </div>
+    <footer class="mono">Text, photographs and interviews by Nargiz · Astana · 2026</footer>
+  </div>
+</section>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-label="Photo viewer"><img alt=""><p class="mono">Click or press Esc to close</p></div>
+
+<script>
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var clamp=function(v,a,b){return Math.max(a,Math.min(b,v))};
+
+  /* film grain tile */
+  try{
+    var g=document.createElement('canvas');g.width=g.height=180;var x=g.getContext('2d'),d=x.createImageData(180,180);
+    for(var i=0;i<d.data.length;i+=4){var v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}
+    x.putImageData(d,0,0);$('#grain').style.setProperty('--grain','url('+g.toDataURL()+')');
+  }catch(e){}
+
+  /* split quotes/statements into words */
+  $$('[data-words]').forEach(function(p){
+    var out=[];var walk=function(n){n.childNodes.forEach(function(c){
+      if(c.nodeType===3){c.textContent.split(/(\s+)/).forEach(function(t){if(!t)return;out.push(/^\s+$/.test(t)?t:'<span class="w">'+t+'</span>')})}
+      else if(c.nodeType===1){var inner=c.cloneNode(true);var words=inner.textContent.split(/\s+/).filter(Boolean).map(function(t){return '<span class="w">'+t+'</span>'}).join(' ');out.push('<'+c.tagName.toLowerCase()+'>'+words+'</'+c.tagName.toLowerCase()+'>')}
+    })};walk(p);
+    var html=out.join('');p.innerHTML=html;
+    $$('.w',p).forEach(function(w,i){w.style.setProperty('--i',i)});
+  });
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.35});
+  $$('.quote,.statement,.cut').forEach(function(el){io.observe(el)});
+  $('#ch4').classList.add('armed');
+
+  /* city names light up one by one */
+  var names=$('#names');
+  new IntersectionObserver(function(es,o){es.forEach(function(e){if(!e.isIntersecting)return;o.disconnect();
+    $$('li',names).forEach(function(li,i){setTimeout(function(){li.classList.add('on')},reduce?0:i*420)})})},{threshold:.4}).observe(names);
+
+  /* develop photos */
+  var dev=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){e.target.classList.add('dev')},150);dev.unobserve(e.target)}})},{threshold:.25});
+  $$('.frame,.kf').forEach(function(f){dev.observe(f)});
+
+  /* frame counter, shutter flash, progress */
+  var fr=$('#fr'),frn=$('#frname'),flash=$('#flash'),seen={};
+  var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;
+    var s=e.target;fr.textContent=s.dataset.frame;frn.textContent=s.dataset.name;
+    if(s.hasAttribute('data-flash')&&!seen[s.dataset.frame]&&!reduce){seen[s.dataset.frame]=1;flash.classList.remove('go');void flash.offsetWidth;flash.classList.add('go')}
+    seen[s.dataset.frame]=1;
+  })},{rootMargin:'-45% 0px -50% 0px'});
+  $$('[data-frame]').forEach(function(s){sio.observe(s)});
+  var bar=$('#bar');
+  /* film strip pinned horizontal scroll */
+  var strip=$('#strip'),track=$('#track'),sc=$('#stripc'),dist=0,pinned=false;
+  function layout(){
+    if(!pinned)return;
+    var sticky=$('.strip-sticky',strip);
+    dist=Math.max(0,track.scrollWidth-document.documentElement.clientWidth);
+    strip.style.height=(dist+window.innerHeight)+'px';
+  }
+  if(!reduce){strip.classList.add('pinned');pinned=true;layout();
+    $$('img',track).forEach(function(i){if(!i.complete)i.addEventListener('load',layout)});
+    window.addEventListener('load',layout)}
+  window.addEventListener('resize',layout);
+  function stripTick(){
+    if(!pinned)return;
+    var r=strip.getBoundingClientRect(),span=strip.offsetHeight-window.innerHeight;
+    var p=span>0?clamp(-r.top/span,0,1):0;
+    track.style.transform='translate3d('+(-p*dist)+'px,0,0)';
+    var n=Math.min(4,Math.floor(p*4)+1);sc.textContent='0'+n+' / 04';
+  }
+  var tk=false;
+  function onScroll(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.transform='scaleX('+(h>0?clamp(window.scrollY/h,0,1):0)+')';stripTick()})}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* shot list */
+  var shots=$$('.shot');
+  shots.forEach(function(b){b.addEventListener('click',function(){
+    b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');
+    $('#shotc').textContent=shots.filter(function(s){return s.getAttribute('aria-pressed')==='true'}).length+' of 3 shot';
+  })});
+
+  /* lightbox */
+  var lb=$('#lb'),lbi=$('img',lb);
+  document.addEventListener('click',function(e){var t=e.target;
+    if(t.matches&&t.matches('img[data-zoom]')){lbi.src=t.src;lbi.alt=t.alt;lb.classList.add('open')}
+    else if(lb.classList.contains('open')){lb.classList.remove('open')}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('open')});
+
+  /* audio players with real waveform */
+  var current=null;
+  var fmt=function(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)};
+  function player(el){
+    var cv=$('canvas',el),ctx=cv.getContext('2d'),btn=$('.play',el),tm=$('.time',el),box=$('.wave',el);
+    var audio=new Audio();audio.preload='none';audio.src=el.dataset.src;
+    var N=110,peaks=[],seed=+el.dataset.seed||1,dur=0,loaded=false;
+    for(var i=0;i<N;i++){seed=(seed*9301+49297)%233280;peaks.push(.12+.25*(seed/233280))}
+    function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||'#999'}
+    function draw(){
+      var w=box.clientWidth,h=box.clientHeight,dpr=window.devicePixelRatio||1;
+      cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+      var bw=w/N,p=dur?audio.currentTime/dur:0;
+      for(var i=0;i<N;i++){var bh=Math.max(3,peaks[i]*h);ctx.fillStyle=(i/N<p)?css('--safe'):css('--mute');ctx.globalAlpha=(i/N<p)?1:.55;ctx.fillRect(i*bw+bw*.2,(h-bh)/2,bw*.6,bh)}
+      ctx.globalAlpha=1;
+    }
+    function load(){
+      if(loaded)return;loaded=true;
+      fetch(el.dataset.src).then(function(r){return r.arrayBuffer()}).then(function(b){
+        var AC=window.AudioContext||window.webkitAudioContext;var c=new AC();
+        return c.decodeAudioData(b).then(function(ab){c.close&&c.close();return ab})
+      }).then(function(ab){
+        dur=ab.duration;var ch=ab.getChannelData(0),step=Math.floor(ch.length/N),mx=0;peaks=[];
+        for(var i=0;i<N;i++){var m=0;for(var j=i*step;j<(i+1)*step;j+=16){var a=Math.abs(ch[j]);if(a>m)m=a}peaks.push(m);if(m>mx)mx=m}
+        peaks=peaks.map(function(v){return Math.max(.06,Math.pow(v/(mx||1),.7)*.95)});
+        tm.textContent='0:00 / '+fmt(dur);draw();
+      }).catch(function(){});
+    }
+    new IntersectionObserver(function(es,o){if(es[0].isIntersecting){load();o.disconnect()}},{rootMargin:'300px'}).observe(el);
+    audio.addEventListener('loadedmetadata',function(){if(!dur||isFinite(audio.duration)){dur=audio.duration||dur}tm.textContent='0:00 / '+fmt(dur)});
+    audio.addEventListener('timeupdate',function(){tm.textContent=fmt(audio.currentTime)+' / '+fmt(dur);draw()});
+    audio.addEventListener('ended',function(){el.classList.remove('on');draw()});
+    btn.addEventListener('click',function(){
+      if(audio.paused){if(current&&current!==audio)current.pause();current=audio;audio.play().catch(function(){})}else audio.pause();
+    });
+    audio.addEventListener('play',function(){el.classList.add('on')});
+    audio.addEventListener('pause',function(){el.classList.remove('on')});
+    box.addEventListener('click',function(e){var r=box.getBoundingClientRect();if(dur){audio.currentTime=dur*clamp((e.clientX-r.left)/r.width,0,1);draw()}});
+    window.addEventListener('resize',draw);draw();
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(draw);
+  }
+  $$('.player').forEach(player);
+})();
+</script>
+
+</body></html>
